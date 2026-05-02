@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# Smart Thermostat Runtime Monitor
+Interactive dashboard for visualizing smart thermostat behavior through simulation traces and verifying safety and liveness properties.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview & Purpose
+This project models a smart thermostat as a cyber-physical system and provides a React-based dashboard to step through its execution. You can explore how inputs affect system state over time, compare correct and faulty behaviors, and identify when properties pass or fail. This project demonstrates runtime monitoring and verification of a cyber-physical system by making system behavior visible and easy to analyze.
 
-## Available Scripts
+## Features
+- Step through simulation traces tick-by-tick
+- Multiple scenarios (normal + faulty behavior)
+- Visual thermostat display (temperature, mode, setpoint)
+- Safety and liveness property checks with pass/fail indicators
+- Trace table with highlighted current step
 
-In the project directory, you can run:
+## Navigation
+The navigation bar at the top of the application allows you to switch between different system models:
+- Correct → Displays the expected, fully working thermostat behavior
+- Buggy Temp → Shows a model with temperature-related faults
+- Buggy Mode → Shows a model with issues in mode switching or timer logic
 
-### `npm start`
+When you switch between these views:
+- The application loads a different set of simulation traces
+- Resets scenario and tick to the start
+- Highlights the active view
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Python Model (Generating Traces)
+The `python/` folder contains the system model, monitors, and scenarios used to generate the trace files.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To switch between correct and buggy behavior:
+- Update the system logic in `thermostat.py`. The `step` function controls how the system evolves, and you can introduce faults by adjusting parameters to call buggy variants of the logic.
+- In `main.py`, set the `folder` variable in `export_trace` to choose where the generated traces will be saved.
+- Run `main.py` to regenerate traces, which will be exported as JSON files to the selected folder.
 
-### `npm test`
+Example:
+```
+cd python
+python main.py
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Project Structure
+```
+public/
+  correct_behavior/   # normal traces
+  buggy_temp/         # temperature faults
+  buggy_mode/         # mode/timer faults
 
-### `npm run build`
+python/               # system model + trace generation
+  main.py
+  thermostat.py
+  monitors.py
+  scenarios.py
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+src/
+  components/         # UI panels (state, input, output, checks)
+  App.js              # main app logic
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Running the App
+```
+npm install
+npm start
+```
