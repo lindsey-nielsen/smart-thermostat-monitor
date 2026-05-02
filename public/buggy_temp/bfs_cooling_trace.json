@@ -1,0 +1,133 @@
+[
+    {
+        "step": 0,
+        "state": {
+            "mode": "OFF",
+            "selected_mode": "OFF",
+            "temp": 70,
+            "setpoint": 70,
+            "timer": 0,
+            "timer_active": false
+        },
+        "input": null
+    },
+    {
+        "step": 1,
+        "state": {
+            "mode": "COOL",
+            "selected_mode": "COOL",
+            "temp": 71,
+            "setpoint": 68,
+            "timer": 0,
+            "timer_active": false
+        },
+        "input": {
+            "new_mode_cmd": "COOL",
+            "new_setpoint": 68,
+            "timer_set": null,
+            "ambient_temp": 75
+        }
+    },
+    {
+        "step": 2,
+        "state": {
+            "mode": "COOL",
+            "selected_mode": "COOL",
+            "temp": 72,
+            "setpoint": 68,
+            "timer": 0,
+            "timer_active": false
+        },
+        "input": {
+            "new_mode_cmd": null,
+            "new_setpoint": null,
+            "timer_set": null,
+            "ambient_temp": 75
+        }
+    },
+    {
+        "step": 3,
+        "state": {
+            "mode": "COOL",
+            "selected_mode": "COOL",
+            "temp": 73,
+            "setpoint": 68,
+            "timer": 0,
+            "timer_active": false
+        },
+        "input": {
+            "new_mode_cmd": null,
+            "new_setpoint": null,
+            "timer_set": null,
+            "ambient_temp": 75
+        }
+    },
+    {
+        "step": 4,
+        "state": {
+            "mode": "COOL",
+            "selected_mode": "COOL",
+            "temp": 74,
+            "setpoint": 68,
+            "timer": 0,
+            "timer_active": false
+        },
+        "input": {
+            "new_mode_cmd": null,
+            "new_setpoint": null,
+            "timer_set": null,
+            "ambient_temp": 75
+        }
+    },
+    {
+        "step": 5,
+        "state": {
+            "mode": "COOL",
+            "selected_mode": "COOL",
+            "temp": 75,
+            "setpoint": 68,
+            "timer": 0,
+            "timer_active": false
+        },
+        "input": {
+            "new_mode_cmd": null,
+            "new_setpoint": null,
+            "timer_set": null,
+            "ambient_temp": 75
+        }
+    },
+    {
+        "step": 6,
+        "state": {
+            "mode": "COOL",
+            "selected_mode": "COOL",
+            "temp": 76,
+            "setpoint": 68,
+            "timer": 0,
+            "timer_active": false
+        },
+        "input": {
+            "new_mode_cmd": null,
+            "new_setpoint": null,
+            "timer_set": null,
+            "ambient_temp": 75
+        }
+    },
+    {
+        "step": 7,
+        "state": {
+            "mode": "COOL",
+            "selected_mode": "COOL",
+            "temp": 77,
+            "setpoint": 68,
+            "timer": 0,
+            "timer_active": false
+        },
+        "input": {
+            "new_mode_cmd": null,
+            "new_setpoint": null,
+            "timer_set": null,
+            "ambient_temp": 75
+        }
+    }
+]

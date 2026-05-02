@@ -1,0 +1,406 @@
+/* FONTS =============================================================================================================== */
+@font-face {
+  font-family: 'Quicksand';
+  src: url('./assets/Quicksand-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Electrolize';
+  src: url('./assets/Electrolize-Regular.ttf') format('truetype');
+}
+
+
+/* GLOBAL STYLES ====================================================================================================== */
+body {
+  margin: 0;
+  font-family: 'Quicksand', Arial, sans-serif;
+  background: #C9E6F0;
+  color: #1f2f38;
+}
+
+section {
+  background: #FFFEFB;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+
+/* LAYOUT ============================================================================================================= */
+.dashboard {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.content {
+  padding: 0 24px 32px;
+}
+
+.sticky-top {
+  position: sticky;
+  top: 65px;
+  z-index: 20;
+  background: #C9E6F0;
+  padding: 12px 24px 12px;
+}
+
+
+/* HEADERS & TEXT ===================================================================================================== */
+.dashboard-header {
+  margin-bottom: 18px;
+}
+
+.dashboard-header h1,
+h2 {
+  font-family: 'Electrolize', Arial, sans-serif;
+}
+
+.dashboard-header h1 {
+  margin-bottom: 10px;
+  font-size: 32px;
+}
+
+.dashboard-header p,
+.stat-label,
+.setpoint {
+  color: #4f7180;
+}
+
+.panel-title {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+
+/* GRID LAYOUTS ======================================================================================================= */
+.control-card {
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.top-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.check-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.trace {
+  gap: 18px;
+}
+
+
+/* INPUTS & CONTROLS =================================================================================================== */
+button,
+select {
+  padding: 8px;
+  border-radius: 10px;
+  border: 2px solid #F96E2A;
+  background: #FFFEFB;
+  margin-left: 10px;
+  font-family: 'Quicksand', Arial, sans-serif;
+}
+
+button {
+  cursor: pointer;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+button:hover {
+  background-color: #F96E2A;
+  color: #FFFEFB;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+button:focus,
+select:focus {
+  outline: none;
+  border-color: #F96E2A;
+  box-shadow: 0 0 0 3px rgba(249, 110, 42, 0.25);
+}
+
+
+/* SELECT DROPDOWN ===================================================================================================== */
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.select-wrapper select {
+  appearance: none;
+  padding-right: 34px;
+  cursor: pointer;
+}
+
+.select-wrapper::after {
+  content: "▼";
+  position: absolute;
+  right: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #F96E2A;
+  font-size: 11px;
+  pointer-events: none;
+}
+
+.select-wrapper:focus-within::after {
+  color: #78B3CE;
+}
+
+
+/* STAT DISPLAY ======================================================================================================= */
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #C9E6F0;
+}
+
+.stat-row:last-child {
+  border-bottom: none;
+}
+
+.stat-value {
+  font-weight: 700;
+}
+
+
+/* MODE STYLES ========================================================================================================= */
+.mode-badge,
+.mode-pill {
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.mode-badge {
+  padding: 4px 10px;
+  font-size: 13px;
+}
+
+.mode-pill {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #C9E6F0;
+  color: #1f2f38;
+}
+
+.mode-heat {
+  background: #F96E2A;
+  color: #FFFEFB;
+}
+
+.mode-cool {
+  background: #78B3CE;
+  color: #FFFEFB;
+}
+
+.mode-off,
+.mode-none {
+  background: #C9E6F0;
+  color: #1f2f38;
+}
+
+
+/* TEMPERATURE BAR ===================================================================================================== */
+.temp-bar {
+  height: 10px;
+  background: #C9E6F0;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.temp-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #78B3CE, #F96E2A);
+}
+
+
+/* THERMOSTAT ========================================================================================================== */
+.thermostat-card {
+  text-align: center;
+}
+
+.thermostat-circle {
+  width: 190px;
+  height: 190px;
+  margin: 20px auto;
+  border-radius: 50%;
+  border: 12px solid #78B3CE;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #FFFEFB;
+}
+
+.thermostat-card.heat .thermostat-circle {
+  border-color: #F96E2A;
+}
+
+.thermostat-card.cool .thermostat-circle {
+  border-color: #78B3CE;
+}
+
+.thermostat-card.off .thermostat-circle {
+  border-color: #C9E6F0;
+}
+
+.temp {
+  font-size: 42px;
+  font-weight: bold;
+}
+
+.setpoint {
+  margin-top: 8px;
+  font-size: 15px;
+}
+
+.ambient {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #4f7180;
+}
+
+
+/* CHECK PANELS ======================================================================================================== */
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  background: #FFFEFB;
+}
+
+.check-icon {
+  font-weight: 800;
+}
+
+.check-icon.pass {
+  color: #78B3CE;
+}
+
+.check-icon.fail {
+  color: #F96E2A;
+}
+
+
+/* TRACE TABLE ======================================================================================================== */
+.trace-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  border: 2px solid #C9E6F0;
+}
+
+.trace-table th,
+.trace-table td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #C9E6F0;
+}
+
+.trace-table th {
+  background: #C9E6F0;
+}
+
+.active-row {
+  background: rgba(249, 110, 42, 0.15);
+}
+
+
+/* NAVBAR ============================================================================================================= */
+.navbar {
+  background: #FFFEFB;
+  border-bottom: 3px solid #F96E2A;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  padding: 14px 32px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.navbar-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  font-family: 'Electrolize', Arial, sans-serif;
+  font-size: 24px;
+  margin: 0;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 12px;
+}
+
+.navbar-links a {
+  font-family: 'Quicksand', Arial, sans-serif;
+  color: #4f7180;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+}
+
+.navbar-links a:hover {
+  color: #F96E2A;
+  border-color: #F96E2A;
+  background: rgba(249, 110, 42, 0.08);
+}
+
+.navbar-links a.active {
+  background: #F96E2A;
+  color: #FFFEFB;
+  border-color: #F96E2A;
+}
+
+
+/* RESPONSIVE ========================================================================================================= */
+@media (max-width: 800px) {
+  .control-card,
+  .top-grid,
+  .dashboard-grid,
+  .check-grid {
+    display: block;
+  }
+
+  .top-grid > section,
+  .dashboard-grid > section,
+  .check-grid > section {
+    margin-bottom: 18px;
+  }
+}

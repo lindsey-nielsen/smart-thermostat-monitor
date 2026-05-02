@@ -1,0 +1,266 @@
+[
+    {
+        "tick": 0,
+        "state": {
+            "mode": "OFF",
+            "selected_mode": "OFF",
+            "temp": 70,
+            "setpoint": 70,
+            "timer": 0,
+            "timer_active": false
+        },
+        "input": {
+            "new_mode_cmd": "HEAT",
+            "new_setpoint": 72,
+            "timer_set": null,
+            "ambient_temp": 65
+        },
+        "outputs": {
+            "heat_on": false,
+            "cool_on": false
+        },
+        "next_state": {
+            "mode": "HEAT",
+            "selected_mode": "HEAT",
+            "temp": 69,
+            "setpoint": 72,
+            "timer": 0,
+            "timer_active": false
+        },
+        "safety_checks": {
+            "S1": true,
+            "S2": true,
+            "S3": true,
+            "S4/S5": true,
+            "S6": true
+        },
+        "liveness_checks": {
+            "L1": true,
+            "L2": true,
+            "L3": true,
+            "L4": true,
+            "L5": true,
+            "L6": true
+        }
+    },
+    {
+        "tick": 1,
+        "state": {
+            "mode": "HEAT",
+            "selected_mode": "HEAT",
+            "temp": 69,
+            "setpoint": 72,
+            "timer": 0,
+            "timer_active": false
+        },
+        "input": {
+            "new_mode_cmd": null,
+            "new_setpoint": null,
+            "timer_set": null,
+            "ambient_temp": 65
+        },
+        "outputs": {
+            "heat_on": true,
+            "cool_on": false
+        },
+        "next_state": {
+            "mode": "HEAT",
+            "selected_mode": "HEAT",
+            "temp": 68,
+            "setpoint": 72,
+            "timer": 0,
+            "timer_active": false
+        },
+        "safety_checks": {
+            "S1": true,
+            "S2": true,
+            "S3": true,
+            "S4/S5": true,
+            "S6": true
+        },
+        "liveness_checks": {
+            "L1": true,
+            "L2": true,
+            "L3": true,
+            "L4": true,
+            "L5": true,
+            "L6": true
+        }
+    },
+    {
+        "tick": 2,
+        "state": {
+            "mode": "HEAT",
+            "selected_mode": "HEAT",
+            "temp": 68,
+            "setpoint": 72,
+            "timer": 0,
+            "timer_active": false
+        },
+        "input": {
+            "new_mode_cmd": "OFF",
+            "new_setpoint": null,
+            "timer_set": null,
+            "ambient_temp": 65
+        },
+        "outputs": {
+            "heat_on": true,
+            "cool_on": false
+        },
+        "next_state": {
+            "mode": "OFF",
+            "selected_mode": "OFF",
+            "temp": 67,
+            "setpoint": 72,
+            "timer": 0,
+            "timer_active": false
+        },
+        "safety_checks": {
+            "S1": true,
+            "S2": true,
+            "S3": true,
+            "S4/S5": true,
+            "S6": true
+        },
+        "liveness_checks": {
+            "L1": true,
+            "L2": true,
+            "L3": true,
+            "L4": true,
+            "L5": true,
+            "L6": true
+        }
+    },
+    {
+        "tick": 3,
+        "state": {
+            "mode": "OFF",
+            "selected_mode": "OFF",
+            "temp": 67,
+            "setpoint": 72,
+            "timer": 0,
+            "timer_active": false
+        },
+        "input": {
+            "new_mode_cmd": null,
+            "new_setpoint": null,
+            "timer_set": null,
+            "ambient_temp": 65
+        },
+        "outputs": {
+            "heat_on": false,
+            "cool_on": false
+        },
+        "next_state": {
+            "mode": "OFF",
+            "selected_mode": "OFF",
+            "temp": 66,
+            "setpoint": 72,
+            "timer": 0,
+            "timer_active": false
+        },
+        "safety_checks": {
+            "S1": true,
+            "S2": true,
+            "S3": true,
+            "S4/S5": true,
+            "S6": true
+        },
+        "liveness_checks": {
+            "L1": true,
+            "L2": true,
+            "L3": true,
+            "L4": true,
+            "L5": true,
+            "L6": true
+        }
+    },
+    {
+        "tick": 4,
+        "state": {
+            "mode": "OFF",
+            "selected_mode": "OFF",
+            "temp": 66,
+            "setpoint": 72,
+            "timer": 0,
+            "timer_active": false
+        },
+        "input": {
+            "new_mode_cmd": null,
+            "new_setpoint": null,
+            "timer_set": null,
+            "ambient_temp": 65
+        },
+        "outputs": {
+            "heat_on": false,
+            "cool_on": false
+        },
+        "next_state": {
+            "mode": "OFF",
+            "selected_mode": "OFF",
+            "temp": 65,
+            "setpoint": 72,
+            "timer": 0,
+            "timer_active": false
+        },
+        "safety_checks": {
+            "S1": true,
+            "S2": true,
+            "S3": true,
+            "S4/S5": true,
+            "S6": true
+        },
+        "liveness_checks": {
+            "L1": true,
+            "L2": true,
+            "L3": true,
+            "L4": true,
+            "L5": true,
+            "L6": true
+        }
+    },
+    {
+        "tick": 5,
+        "state": {
+            "mode": "OFF",
+            "selected_mode": "OFF",
+            "temp": 65,
+            "setpoint": 72,
+            "timer": 0,
+            "timer_active": false
+        },
+        "input": {
+            "new_mode_cmd": null,
+            "new_setpoint": null,
+            "timer_set": null,
+            "ambient_temp": 65
+        },
+        "outputs": {
+            "heat_on": false,
+            "cool_on": false
+        },
+        "next_state": {
+            "mode": "OFF",
+            "selected_mode": "OFF",
+            "temp": 65,
+            "setpoint": 72,
+            "timer": 0,
+            "timer_active": false
+        },
+        "safety_checks": {
+            "S1": true,
+            "S2": true,
+            "S3": true,
+            "S4/S5": true,
+            "S6": true
+        },
+        "liveness_checks": {
+            "L1": true,
+            "L2": true,
+            "L3": true,
+            "L4": true,
+            "L5": true,
+            "L6": true
+        }
+    }
+]
