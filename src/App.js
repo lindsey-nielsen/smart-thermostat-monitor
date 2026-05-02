@@ -18,19 +18,22 @@ import Navbar from "./components/Navbar";
 const loadTraces = async (path) => {
   let folder = "correct_behavior";
 
-  if (path === "/buggy-temp") folder = "buggy_temp";
-  if (path === "/buggy-mode") folder = "buggy_mode";
+  if (path.includes("buggy-temp")) folder = "buggy_temp";
+  if (path.includes("buggy-mode")) folder = "buggy_mode";
 
   const baseUrl = process.env.PUBLIC_URL || "";
 
+  console.log("BASE URL:", baseUrl);
+  console.log("Sample path:", `${baseUrl}/${folder}/normal_heat_trace.json`);
+
   const files = {
-    normal_heat: `${baseUrl}${folder}/normal_heat_trace.json`,
-    normal_cooling: `${baseUrl}${folder}/normal_cool_trace.json`,
-    timer: `${baseUrl}${folder}/timer_trace.json`,
-    setpoint_fault: `${baseUrl}${folder}/setpoint_jump_trace.json`,
-    ambient_fault: `${baseUrl}${folder}/unstable_ambient_trace.json`,
-    heat_to_cool: `${baseUrl}${folder}/mode_switch_trace.json`,
-    user_turn_off: `${baseUrl}${folder}/user_turns_off_trace.json`,
+    normal_heat: `${baseUrl}/${folder}/normal_heat_trace.json`,
+    normal_cooling: `${baseUrl}/${folder}/normal_cool_trace.json`,
+    timer: `${baseUrl}/${folder}/timer_trace.json`,
+    setpoint_fault: `${baseUrl}/${folder}/setpoint_jump_trace.json`,
+    ambient_fault: `${baseUrl}/${folder}/unstable_ambient_trace.json`,
+    heat_to_cool: `${baseUrl}/${folder}/mode_switch_trace.json`,
+    user_turn_off: `${baseUrl}/${folder}/user_turns_off_trace.json`,
   };
 
   const results = await Promise.all(
@@ -48,17 +51,9 @@ const loadTraces = async (path) => {
 /**
  * Returns the display name for the current model route.
  */
-const getModelName = () => {
-  const path = window.location.pathname;
-
-  if (path === "/buggy-temp") {
-    return "Buggy Temperature Model";
-  }
-
-  if (path === "/buggy-mode") {
-    return "Buggy Mode/Timer Model";
-  }
-
+const getModelName = (path) => {
+  if (path.includes("buggy-temp")) return "Buggy Temperature Model";
+  if (path.includes("buggy-mode")) return "Buggy Mode/Timer Model";
   return "Correct Model";
 };
 
@@ -88,7 +83,7 @@ function App() {
     <>
       <Navbar />
       <Home
-        modelName={getModelName()}
+        modelName={getModelName(location.pathname)}
         selectedScenario={selectedScenario}
         setSelectedScenario={setSelectedScenario}
         tick={tick}
