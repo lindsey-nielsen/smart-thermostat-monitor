@@ -4,6 +4,9 @@ Interactive dashboard for visualizing smart thermostat behavior through simulati
 ## Overview & Purpose
 This project models a smart thermostat as a cyber-physical system and provides a React-based dashboard to step through its execution. You can explore how inputs affect system state over time, compare correct and faulty behaviors, and identify when properties pass or fail. This project demonstrates runtime monitoring and verification of a cyber-physical system by making system behavior visible and easy to analyze.
 
+## Deployment
+This application is deployed on GitHub Pages and can be accessed at: https://lindsey-nielsen.github.io/smart-thermostat-monitor/
+
 ## Features
 - Step through simulation traces tick-by-tick
 - Multiple scenarios (normal + faulty behavior)
