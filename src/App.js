@@ -21,14 +21,16 @@ const loadTraces = async (path) => {
   if (path === "/buggy-temp") folder = "buggy_temp";
   if (path === "/buggy-mode") folder = "buggy_mode";
 
+  const baseUrl = process.env.PUBLIC_URL || "";
+
   const files = {
-    normal_heat: `/${folder}/normal_heat_trace.json`,
-    normal_cooling: `/${folder}/normal_cool_trace.json`,
-    timer: `/${folder}/timer_trace.json`,
-    setpoint_fault: `/${folder}/setpoint_jump_trace.json`,
-    ambient_fault: `/${folder}/unstable_ambient_trace.json`,
-    heat_to_cool: `/${folder}/mode_switch_trace.json`,
-    user_turn_off: `/${folder}/user_turns_off_trace.json`,
+    normal_heat: `${baseUrl}${folder}/normal_heat_trace.json`,
+    normal_cooling: `${baseUrl}${folder}/normal_cool_trace.json`,
+    timer: `${baseUrl}${folder}/timer_trace.json`,
+    setpoint_fault: `${baseUrl}${folder}/setpoint_jump_trace.json`,
+    ambient_fault: `${baseUrl}${folder}/unstable_ambient_trace.json`,
+    heat_to_cool: `${baseUrl}${folder}/mode_switch_trace.json`,
+    user_turn_off: `${baseUrl}${folder}/user_turns_off_trace.json`,
   };
 
   const results = await Promise.all(
