@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/smart-thermostat-monitor/static/css/main.7b4508a9.css",
+    "main.js": "/smart-thermostat-monitor/static/js/main.17dcd9f2.js",
+    "static/js/453.b6e360fd.chunk.js": "/smart-thermostat-monitor/static/js/453.b6e360fd.chunk.js",
+    "static/media/Quicksand-VariableFont_wght.ttf": "/smart-thermostat-monitor/static/media/Quicksand-VariableFont_wght.7e79b7e7f9a882bcb2ab.ttf",
+    "static/media/Electrolize-Regular.ttf": "/smart-thermostat-monitor/static/media/Electrolize-Regular.b27462fc6532a900b8d3.ttf",
+    "index.html": "/smart-thermostat-monitor/index.html",
+    "main.7b4508a9.css.map": "/smart-thermostat-monitor/static/css/main.7b4508a9.css.map",
+    "main.17dcd9f2.js.map": "/smart-thermostat-monitor/static/js/main.17dcd9f2.js.map",
+    "453.b6e360fd.chunk.js.map": "/smart-thermostat-monitor/static/js/453.b6e360fd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7b4508a9.css",
+    "static/js/main.17dcd9f2.js"
+  ]
+}

@@ -1,0 +1,65 @@
+[
+    {
+        "step": 0,
+        "state": {
+            "mode": "OFF",
+            "selected_mode": "OFF",
+            "temp": 70,
+            "setpoint": 70,
+            "timer": 0,
+            "timer_active": false
+        },
+        "input": null
+    },
+    {
+        "step": 1,
+        "state": {
+            "mode": "OFF",
+            "selected_mode": "OFF",
+            "temp": 69,
+            "setpoint": 70,
+            "timer": 0,
+            "timer_active": false
+        },
+        "input": {
+            "new_mode_cmd": null,
+            "new_setpoint": null,
+            "timer_set": null,
+            "ambient_temp": 65
+        }
+    },
+    {
+        "step": 2,
+        "state": {
+            "mode": "OFF",
+            "selected_mode": "OFF",
+            "temp": 68,
+            "setpoint": 70,
+            "timer": 0,
+            "timer_active": false
+        },
+        "input": {
+            "new_mode_cmd": null,
+            "new_setpoint": null,
+            "timer_set": null,
+            "ambient_temp": 65
+        }
+    },
+    {
+        "step": 3,
+        "state": {
+            "mode": "HEAT",
+            "selected_mode": "HEAT",
+            "temp": 69,
+            "setpoint": 70,
+            "timer": 0,
+            "timer_active": false
+        },
+        "input": {
+            "new_mode_cmd": "HEAT",
+            "new_setpoint": null,
+            "timer_set": null,
+            "ambient_temp": 65
+        }
+    }
+]
