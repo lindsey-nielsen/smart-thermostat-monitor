@@ -119,7 +119,7 @@ def run_safety_checks(state, next_state, inputs, heat_on, cool_on):
     return {
         "S1": no_simultaneous_heat_cool(heat_on, cool_on),
         "S2": no_heat_cool_when_off(heat_on, cool_on, state),
-        "S3": timer_expiration_turns_off(state, next_state),
+        "S3": timer_expiration_turns_off(state, next_state, inputs.new_mode_cmd),
         "S4/S5": turn_off_at_setpoint(state, next_state, inputs),
         "S6": selected_mode_updates_correctly(next_state, inputs.new_mode_cmd)
     }

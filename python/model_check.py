@@ -204,7 +204,7 @@ def passed_safety_checks(state: State, next_state: State, heat_on, cool_on, inpu
     if not no_heat_cool_when_off(heat_on, cool_on, state):
         return False, "S2"
 
-    if not timer_expiration_turns_off(state, next_state):
+    if not timer_expiration_turns_off(state, next_state, inputs.new_mode_cmd):
         return False, "S3"
 
     if not turn_off_at_setpoint(state, next_state, inputs):

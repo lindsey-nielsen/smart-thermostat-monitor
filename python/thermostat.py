@@ -92,57 +92,79 @@ def update_timer(state: State, timer_set: Optional[int]) -> Tuple[int, bool]:
 
 # MODE TRANSITIONS =====================================================================================================
 
-def update_mode(state: State, selected_mode: Mode, setpoint: int) -> Mode:
+def update_mode(state: State, selected_mode: Mode, setpoint: int, new_mode_cmd: Optional[Mode]) -> Tuple[Mode, Mode]:
     """
     Determines the next operating mode of the thermostat
     - Turns OFF if commanded, timer expires, or setpoint is reached
     - Turns HEAT/COOL on if commanded and temperature is outside threshold
     - Otherwise keeps the current mode
-    Returns: next Mode
+    Returns: next mode and selected mode
     """
-    mode: Mode
     delta: int = 1
+    timer_expired : bool = state.timer_active and state.timer == 0
+    new_command_issued : bool = new_mode_cmd is not None
 
+    # user explicitly turned system off
+    if new_command_issued and selected_mode == Mode.OFF:
+        return Mode.OFF, Mode.OFF
+
+    # timer expires only if no new command was issued
+    if timer_expired and not new_command_issued:
+        return Mode.OFF, Mode.OFF
+
+    # stop heating/cooling once setpoint is reached
+    if state.mode == Mode.HEAT and state.temp >= setpoint:
+        return Mode.OFF, selected_mode
+
+    if state.mode == Mode.COOL and state.temp <= setpoint:
+        return Mode.OFF, selected_mode
+
+    # start heating/cooling if selected mode requires it
+    if selected_mode == Mode.HEAT and state.temp <= setpoint - delta:
+        return Mode.HEAT, selected_mode
+
+    if selected_mode == Mode.COOL and state.temp >= setpoint + delta:
+        return Mode.COOL, selected_mode
+
+    # if selected mode is OFF, stay off
     if selected_mode == Mode.OFF:
-        mode = Mode.OFF
-    elif state.timer_active and state.timer == 0:
-        mode = Mode.OFF
-    elif state.mode == Mode.HEAT and state.temp >= setpoint:
-        mode = Mode.OFF
-    elif state.mode == Mode.COOL and state.temp <= setpoint:
-        mode = Mode.OFF
-    elif selected_mode == Mode.HEAT and state.temp <= setpoint - delta:
-        mode = Mode.HEAT
-    elif selected_mode == Mode.COOL and state.temp >= setpoint + delta:
-        mode = Mode.COOL
-    else:
-        mode = state.mode
+        return Mode.OFF, selected_mode
 
-    return mode
+    return state.mode, selected_mode
 
 
-def update_mode_buggy(state: State, selected_mode: Mode, setpoint: int) -> Mode:
+def update_mode_buggy(state: State, selected_mode: Mode, setpoint: int, new_mode_cmd: Optional[Mode]) -> Tuple[Mode, Mode]:
     """
     Buggy mode update: ignores timer expiration.
     """
-    mode: Mode
     delta: int = 1
+    new_command_issued : bool = new_mode_cmd is not None
 
-    if selected_mode == Mode.OFF:
-        mode = Mode.OFF
+    # user explicitly turned system off
+    if new_command_issued and selected_mode == Mode.OFF:
+        return Mode.OFF, Mode.OFF
+
     # bug! removed timer expiration check
-    elif state.mode == Mode.HEAT and state.temp >= setpoint:
-        mode = Mode.OFF
-    elif state.mode == Mode.COOL and state.temp <= setpoint:
-        mode = Mode.OFF
-    elif selected_mode == Mode.HEAT and state.temp <= setpoint - delta:
-        mode = Mode.HEAT
-    elif selected_mode == Mode.COOL and state.temp >= setpoint + delta:
-        mode = Mode.COOL
-    else:
-        mode = state.mode
 
-    return mode
+    # stop heating/cooling once setpoint is reached
+    if state.mode == Mode.HEAT and state.temp >= setpoint:
+        return Mode.OFF, selected_mode
+
+    if state.mode == Mode.COOL and state.temp <= setpoint:
+        return Mode.OFF, selected_mode
+
+    # start heating/cooling if selected mode requires it
+    if selected_mode == Mode.HEAT and state.temp <= setpoint - delta:
+        return Mode.HEAT, selected_mode
+
+    if selected_mode == Mode.COOL and state.temp >= setpoint + delta:
+        return Mode.COOL, selected_mode
+
+    # if selected mode is OFF, stay off
+    if selected_mode == Mode.OFF:
+        return Mode.OFF, selected_mode
+
+    return state.mode, selected_mode
 
 
 # TEMPERATURE UPDATE ===================================================================================================
@@ -193,7 +215,7 @@ def update_temp_buggy(state: State, mode: Mode, ambient_temp: int) -> int:
 
 # SYSTEM STEP ==========================================================================================================
 
-def step(state: State, inputs: Input, use_buggy_temp=False, use_buggy_mode=True) -> Tuple[State, bool, bool]:
+def step(state: State, inputs: Input, use_buggy_temp=False, use_buggy_mode=False) -> Tuple[State, bool, bool]:
     """
     Executes one step of the system
     - Computes outputs (heat_on, cool_on)
@@ -219,9 +241,9 @@ def step(state: State, inputs: Input, use_buggy_temp=False, use_buggy_mode=True)
 
     # Choose between correct and buggy mode update
     if use_buggy_mode:
-        mode = update_mode_buggy(state, selected_mode, setpoint)
+        mode, selected_mode = update_mode_buggy(state, selected_mode, setpoint, inputs.new_mode_cmd)
     else:
-        mode = update_mode(state, selected_mode, setpoint)
+        mode, selected_mode = update_mode(state, selected_mode, setpoint, inputs.new_mode_cmd)
 
     # Choose between correct and buggy temperature update
     if use_buggy_temp:

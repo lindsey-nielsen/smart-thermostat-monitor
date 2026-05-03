@@ -105,9 +105,13 @@ def no_heat_cool_when_off(heat_on: bool, cool_on: bool, state: State) -> bool:
     return state.mode != Mode.OFF or (not heat_on and not cool_on)
 
 
-def timer_expiration_turns_off(state : State, next_state : State) -> bool:
-    """ S3: The thermostat must turn off in the next tick when the timer runs out. """
-    return not (state.timer_active and state.timer == 0) or next_state.mode == Mode.OFF
+def timer_expiration_turns_off(state : State, next_state : State, new_mode_cmd: Optional[Mode]) -> bool:
+    """ S3: The thermostat must turn off in the next tick when the timer runs out, unless a new mode
+        command is issued. """
+    if state.timer_active and state.timer == 0 and new_mode_cmd is None:
+        return next_state.mode == Mode.OFF and next_state.selected_mode == Mode.OFF
+
+    return True
 
 
 def turn_off_at_setpoint(state: State, next_state: State, inputs: Input) -> bool:
